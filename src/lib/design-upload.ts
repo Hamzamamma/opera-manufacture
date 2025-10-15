@@ -37,7 +37,7 @@ export interface DesignMetadata {
   };
   uploadedAt: Date;
   printfulProductId?: number;
-  placement?: 'front' | 'back' | 'sleeve' | 'all-over';
+  placement?: string; // Flexible placement type for Printful API compatibility
   mockupUrls?: string[];
   status: 'uploaded' | 'processing' | 'ready' | 'error';
 }

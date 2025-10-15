@@ -1,11 +1,14 @@
 import { createMockupTask, getMockupTask } from '@/lib/printful';
 import { updateDesignMetadata } from '@/lib/design-upload';
 
+// Printful placement types - using string for flexibility as Printful supports many placement options
+export type PrintfulPlacement = string;
+
 export interface MockupOptions {
   productId: number;
   variantIds: number[];
   designUrl: string;
-  placement: 'front' | 'back' | 'sleeve' | 'all-over' | 'embroidered_front' | 'embroidered_back';
+  placement: PrintfulPlacement;
   position?: {
     area_width: number;
     area_height: number;
@@ -225,9 +228,9 @@ export const generateAndSaveMockup = async (
  */
 export const getOptimalPlacement = (
   productId: number
-): 'front' | 'back' | 'sleeve' | 'all-over' => {
+): PrintfulPlacement => {
   // Common product IDs from Printful
-  const productPlacements: Record<number, typeof placement> = {
+  const productPlacements: Record<number, string> = {
     71: 'front', // Unisex T-Shirt
     146: 'front', // Women's T-Shirt
     19: 'front', // Premium T-Shirt
@@ -235,8 +238,7 @@ export const getOptimalPlacement = (
     // Add more mappings as needed
   };
 
-  const placement = productPlacements[productId] || 'front';
-  return placement;
+  return productPlacements[productId] || 'front';
 };
 
 /**
@@ -306,7 +308,7 @@ export const generateMockupsForAllVariants = async (
   designUrl: string,
   productId: number,
   variantIds: number[],
-  placement?: 'front' | 'back' | 'sleeve'
+  placement?: PrintfulPlacement
 ): Promise<{ mockupUrls: string[]; error: string | null }> => {
   try {
     const optimalPlacement = placement || getOptimalPlacement(productId);
