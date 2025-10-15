@@ -13,6 +13,7 @@ import {
   getOptimalPlacement,
   type MockupOptions,
   type MockupResult,
+  type PrintfulPlacement,
 } from '@/lib/printful-mockup';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/config/firebase';
@@ -56,7 +57,7 @@ interface ProductData {
   productId: number;
   productName: string;
   productImage: string;
-  placement: 'front' | 'back' | 'sleeve' | 'all-over';
+  placement: PrintfulPlacement;
   selectedVariants: number[];
   mockupUrls: string[];
   basePrice: number;
@@ -85,7 +86,7 @@ export default function CreateProductPage() {
   const [productVariants, setProductVariants] = useState<PrintfulVariant[]>([]);
 
   // Placement & Mockup
-  const [selectedPlacement, setSelectedPlacement] = useState<'front' | 'back' | 'sleeve' | 'all-over'>('front');
+  const [selectedPlacement, setSelectedPlacement] = useState<PrintfulPlacement>('front');
   const [mockupResult, setMockupResult] = useState<MockupResult | null>(null);
 
   // Variants & Pricing
@@ -564,7 +565,7 @@ export default function CreateProductPage() {
                 {['front', 'back', 'sleeve', 'all-over'].map((placement) => (
                   <button
                     key={placement}
-                    onClick={() => setSelectedPlacement(placement as any)}
+                    onClick={() => setSelectedPlacement(placement)}
                     className={`p-6 border-2 rounded-lg transition-all ${
                       selectedPlacement === placement
                         ? 'border-blue-600 bg-blue-50'
