@@ -97,11 +97,11 @@ const pollMockupTask = async (
     try {
       const result = await getMockupTask(taskKey);
 
-      if (result.error) {
+      if (result.error || !result.data) {
         return {
           taskKey,
           mockups: [],
-          error: result.error,
+          error: result.error || 'Failed to fetch mockup task status',
         };
       }
 
