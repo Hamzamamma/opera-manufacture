@@ -109,9 +109,10 @@ const pollMockupTask = async (
 
       // Check task status
       if (taskData.status === 'completed') {
-        // Extract mockup URLs
-        const mockups = taskData.mockups.map((mockup: any) => ({
-          variant_id: mockup.variant_id,
+        // Extract mockup URLs from either mockups or result.mockups
+        const mockupsArray = taskData.mockups || taskData.result?.mockups || [];
+        const mockups = mockupsArray.map((mockup) => ({
+          variant_id: mockup.variant_ids?.[0] || 0,
           placement: mockup.placement,
           mockup_url: mockup.mockup_url,
         }));

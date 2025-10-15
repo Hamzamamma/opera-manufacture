@@ -7,6 +7,8 @@ import type {
   PrintfulShippingRate,
   PrintfulShippingRatesRequest,
   PrintfulCatalogVariant,
+  PrintfulMockupGenerationTask,
+  PrintfulMockupTaskResponse,
 } from '@/types/printful';
 
 /**
@@ -188,24 +190,12 @@ export const getProductTemplate = async (productId: number) => {
 /**
  * Create a mockup generation task
  */
-export const createMockupTask = async (data: {
-  variant_ids: number[];
-  format?: string;
-  files?: Array<{
-    placement: string;
-    image_url: string;
-    position?: {
-      area_width: number;
-      area_height: number;
-      width: number;
-      height: number;
-      top: number;
-      left: number;
-    };
-  }>;
-}) => {
+export const createMockupTask = async (data: PrintfulMockupGenerationTask) => {
   try {
-    const response = await printfulClient.post('/mockup-generator/create-task', data);
+    const response = await printfulClient.post<{ task_key: string }>(
+      '/mockup-generator/create-task',
+      data
+    );
     return { data: response.result, error: null };
   } catch (error: any) {
     return { data: null, error: error.message || 'Failed to create mockup task' };
@@ -217,7 +207,9 @@ export const createMockupTask = async (data: {
  */
 export const getMockupTask = async (taskKey: string) => {
   try {
-    const response = await printfulClient.get(`/mockup-generator/task?task_key=${taskKey}`);
+    const response = await printfulClient.get<PrintfulMockupTaskResponse>(
+      `/mockup-generator/task?task_key=${taskKey}`
+    );
     return { data: response.result, error: null };
   } catch (error: any) {
     return { data: null, error: error.message || 'Failed to fetch mockup task' };
