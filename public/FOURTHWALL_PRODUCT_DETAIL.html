@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella+Canvas 3001 - Opera Manufacture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #4A90E2;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --hover-bg: #f5f5f5;
+            --success-color: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .cart-btn {
+            position: relative;
+            padding: 10px 20px;
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            background: var(--hover-bg);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-color);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-top: 90px;
+            padding: 0 40px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .thumbnail {
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary-color);
+        }
+
+        /* Product Info */
+        .product-info {
+            padding-top: 20px;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .product-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .product-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .price-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Configuration Section */
+        .config-section {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .config-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Color Selector */
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 12px;
+        }
+
+        .color-option {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary-color);
+        }
+
+        .color-option::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .color-option:hover::after {
+            opacity: 1;
+        }
+
+        /* Size Selector */
+        .size-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 12px;
+        }
+
+        .size-option {
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .size-option:hover {
+            border-color: var(--primary-color);
+            background: var(--hover-bg);
+        }
+
+        .size-option.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Quantity Selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--hover-bg);
+        }
+
+        .quantity-value {
+            width: 60px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 18px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--hover-bg);
+        }
+
+        /* Features List */
+        .features-list {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .feature-text p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 32px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 32px;
+        }
+
+        .tab {
+            padding: 16px 0;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .tab:hover,
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .specs-table {
+            width: 100%;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-table td {
+            padding: 16px 0;
+            font-size: 15px;
+        }
+
+        .specs-table td:first-child {
+            font-weight: 600;
+            width: 200px;
+        }
+
+        .specs-table td:last-child {
+            color: var(--text-secondary);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 40px;
+            background: var(--success-color);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 968px) {
+            .product-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .image-gallery {
+                position: relative;
+                top: 0;
+            }
+
+            .product-title {
+                font-size: 36px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="FOURTHWALL_HOMEPAGE.html" class="logo">Opera Manufacture</a>
+            <div class="nav-actions">
+                <button class="cart-btn">
+                    🛒 Carrello
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="FOURTHWALL_HOMEPAGE.html">Home</a>
+        <span>/</span>
+        <a href="FOURTHWALL_PRODUCTS.html">Prodotti</a>
+        <span>/</span>
+        <span>T-Shirt Premium</span>
+    </div>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <div class="main-image" id="mainImage">👕</div>
+            <div class="thumbnail-gallery">
+                <div class="thumbnail active">👕</div>
+                <div class="thumbnail">🎨</div>
+                <div class="thumbnail">📏</div>
+                <div class="thumbnail">✨</div>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <span class="product-badge">✨ Bestseller</span>
+            <h1 class="product-title">Bella+Canvas 3001</h1>
+            <p class="product-subtitle">T-shirt unisex premium in cotone morbido</p>
+
+            <div class="price-section">
+                <div class="price">€9,50</div>
+                <p class="price-note">Prezzo base • I costi di stampa saranno calcolati in base al design</p>
+            </div>
+
+            <!-- Color Selection -->
+            <div class="config-section">
+                <label class="config-label">Seleziona Colore</label>
+                <div class="color-options">
+                    <div class="color-option active" data-name="Nero" style="background: #000000;"></div>
+                    <div class="color-option" data-name="Bianco" style="background: #ffffff; border: 1px solid #e0e0e0;"></div>
+                    <div class="color-option" data-name="Navy" style="background: #001f3f;"></div>
+                    <div class="color-option" data-name="Grigio" style="background: #808080;"></div>
+                    <div class="color-option" data-name="Rosso" style="background: #cc0000;"></div>
+                    <div class="color-option" data-name="Blu" style="background: #0066cc;"></div>
+                    <div class="color-option" data-name="Verde" style="background: #006400;"></div>
+                    <div class="color-option" data-name="Rosa" style="background: #ff69b4;"></div>
+                </div>
+            </div>
+
+            <!-- Size Selection -->
+            <div class="config-section">
+                <label class="config-label">Seleziona Taglia</label>
+                <div class="size-options">
+                    <div class="size-option">XS</div>
+                    <div class="size-option">S</div>
+                    <div class="size-option active">M</div>
+                    <div class="size-option">L</div>
+                    <div class="size-option">XL</div>
+                    <div class="size-option">XXL</div>
+                </div>
+            </div>
+
+            <!-- Quantity Selection -->
+            <div class="config-section">
+                <label class="config-label">Quantità</label>
+                <div class="quantity-selector">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" id="decreaseQty">−</button>
+                        <div class="quantity-value" id="qtyValue">1</div>
+                        <button class="quantity-btn" id="increaseQty">+</button>
+                    </div>
+                    <span style="font-size: 14px; color: var(--text-secondary);">Nessun minimo d'ordine richiesto</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="addToCartBtn">
+                    🛒 Aggiungi al Carrello
+                </button>
+                <button class="btn btn-secondary" id="customizeBtn">
+                    🎨 Personalizza Design
+                </button>
+            </div>
+
+            <!-- Features -->
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">✅</div>
+                    <div class="feature-text">
+                        <h4>Qualità Premium</h4>
+                        <p>100% cotone cardato ad anello, morbido e confortevole</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📦</div>
+                    <div class="feature-text">
+                        <h4>Spedizione Veloce</h4>
+                        <p>Produzione in 2-4 giorni lavorativi</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-text">
+                        <h4>Stampa HD</h4>
+                        <p>Tecnologia di stampa all'avanguardia per colori vivaci</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">♻️</div>
+                    <div class="feature-text">
+                        <h4>Sostenibile</h4>
+                        <p>Materiali eco-friendly e processi sostenibili</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tab active" data-tab="description">Descrizione</div>
+                <div class="tab" data-tab="specs">Specifiche</div>
+                <div class="tab" data-tab="shipping">Spedizione</div>
+            </div>
+
+            <div class="tab-content active" id="description">
+                <p class="description">
+                    La Bella+Canvas 3001 è la t-shirt perfetta per i creator che vogliono offrire prodotti di qualità superiore.
+                    Realizzata in 100% cotone cardato ad anello, questa maglietta offre una vestibilità moderna e confortevole
+                    che i tuoi fan adoreranno. La morbidezza del tessuto e la durata nel tempo la rendono ideale per l'uso
+                    quotidiano. Disponibile in una vasta gamma di colori e taglie, puoi personalizzarla con il tuo design
+                    unico per creare merchandising che rappresenti davvero il tuo brand.
+                </p>
+            </div>
+
+            <div class="tab-content" id="specs">
+                <table class="specs-table">
+                    <tr>
+                        <td>Materiale</td>
+                        <td>100% Cotone cardato ad anello</td>
+                    </tr>
+                    <tr>
+                        <td>Peso</td>
+                        <td>145 g/m²</td>
+                    </tr>
+                    <tr>
+                        <td>Vestibilità</td>
+                        <td>Moderna, unisex</td>
+                    </tr>
+                    <tr>
+                        <td>Taglie</td>
+                        <td>XS, S, M, L, XL, XXL</td>
+                    </tr>
+                    <tr>
+                        <td>Colori</td>
+                        <td>50+ colori disponibili</td>
+                    </tr>
+                    <tr>
+                        <td>Metodi di stampa</td>
+                        <td>DTG, Serigrafia, Ricamo</td>
+                    </tr>
+                    <tr>
+                        <td>Cura</td>
+                        <td>Lavabile in lavatrice, asciugatura a bassa temperatura</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tab-content" id="shipping">
+                <p class="description">
+                    <strong>Tempi di produzione:</strong> 2-4 giorni lavorativi<br><br>
+                    <strong>Spedizione nazionale:</strong> 3-5 giorni lavorativi<br>
+                    <strong>Spedizione internazionale:</strong> 7-14 giorni lavorativi<br><br>
+                    Tutti gli ordini includono tracking completo. Gestiamo noi la produzione, l'imballaggio e la spedizione,
+                    così tu puoi concentrarti sul tuo contenuto. Il supporto clienti è completamente gestito dal nostro team.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        ✅ Prodotto aggiunto al carrello!
+    </div>
+
+    <script>
+        // Quantity controls
+        let quantity = 1;
+        const qtyValue = document.getElementById('qtyValue');
+        const decreaseBtn = document.getElementById('decreaseQty');
+        const increaseBtn = document.getElementById('increaseQty');
+
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                qtyValue.textContent = quantity;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            quantity++;
+            qtyValue.textContent = quantity;
+        });
+
+        // Color selection
+        const colorOptions = document.querySelectorAll('.color-option');
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                colorOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+
+        // Size selection
+        const sizeOptions = document.querySelectorAll('.size-option');
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                sizeOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+
+        // Thumbnails
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnail.classList.add('active');
+            });
+        });
+
+        // Tabs
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Add to cart
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const cartCount = document.querySelector('.cart-count');
+        const notification = document.getElementById('notification');
+
+        addToCartBtn.addEventListener('click', () => {
+            const currentCount = parseInt(cartCount.textContent);
+            cartCount.textContent = currentCount + quantity;
+
+            // Show notification
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        });
+
+        // Customize button
+        const customizeBtn = document.getElementById('customizeBtn');
+        customizeBtn.addEventListener('click', () => {
+            alert('Il designer di prodotti verrà aperto qui. Potrai caricare il tuo logo, aggiungere testo e vedere un\'anteprima in tempo reale.');
+        });
+    </script>
+</body>
+</html>

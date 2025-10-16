@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opera Manufacture - Enhanced Minimal Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .slide-in-left { animation: slideInLeft 0.6s ease-out forwards; }
+        .slide-in-right { animation: slideInRight 0.6s ease-out forwards; }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .stat-number { animation: countUp 0.8s ease-out forwards; }
+
+        /* Carousel */
+        .carousel { scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+        .carousel-item { scroll-snap-align: center; }
+
+        /* Video container */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header with sticky behavior -->
+    <header class="border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-sm z-50">
+        <nav class="container mx-auto px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-black rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">OM</span>
+                    </div>
+                    <span class="text-gray-900 font-bold text-xl">Opera Manufacture</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
+                    <a href="#products" class="text-gray-600 hover:text-gray-900 transition">Products</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-gray-900 transition">Reviews</a>
+                    <a href="#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-gray-900 transition">Sign In</button>
+                    <button class="bg-black text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-gray-800 transition">Start Free</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-24">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-8">
+                    🎉 No upfront costs • No inventory required • Free forever
+                </div>
+                <h1 class="text-7xl md:text-8xl font-bold text-gray-900 mb-8 leading-tight">
+                    Design once.<br/>
+                    Sell everywhere.
+                </h1>
+                <p class="text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Transform your creative vision into premium merchandise.
+                    We handle manufacturing, fulfillment, and shipping while you focus on design.
+                </p>
+                <div class="flex items-center justify-center space-x-4">
+                    <button class="bg-black text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-800 transition hover-lift">
+                        Get Started Free
+                    </button>
+                    <button onclick="document.getElementById('demo-video').scrollIntoView({behavior:'smooth'})" class="border-2 border-gray-900 text-gray-900 px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-50 transition hover-lift">
+                        Watch Demo
+                    </button>
+                </div>
+                <p class="text-gray-500 mt-6 text-sm">Join 10,000+ creators • No credit card required</p>
+            </div>
+
+            <!-- Interactive Product Preview Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20">
+                <div class="bg-gray-100 rounded-2xl aspect-square flex flex-col items-center justify-center hover-lift cursor-pointer group">
+                    <span class="text-5xl mb-3 group-hover:scale-110 transition">👕</span>
+                    <span class="text-sm font-medium text-gray-700">T-Shirts</span>
+                </div>
+                <div class="bg-gray-100 rounded-2xl aspect-square flex flex-col items-center justify-center hover-lift cursor-pointer group">
+                    <span class="text-5xl mb-3 group-hover:scale-110 transition">☕</span>
+                    <span class="text-sm font-medium text-gray-700">Mugs</span>
+                </div>
+                <div class="bg-gray-100 rounded-2xl aspect-square flex flex-col items-center justify-center hover-lift cursor-pointer group">
+                    <span class="text-5xl mb-3 group-hover:scale-110 transition">📱</span>
+                    <span class="text-sm font-medium text-gray-700">Phone Cases</span>
+                </div>
+                <div class="bg-gray-100 rounded-2xl aspect-square flex flex-col items-center justify-center hover-lift cursor-pointer group">
+                    <span class="text-5xl mb-3 group-hover:scale-110 transition">🎨</span>
+                    <span class="text-sm font-medium text-gray-700">Posters</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-6">
+            <p class="text-center text-gray-600 font-medium mb-8">Trusted by leading creators and brands</p>
+            <div class="flex items-center justify-center space-x-12 flex-wrap gap-8">
+                <div class="text-2xl font-bold text-gray-400">BRAND A</div>
+                <div class="text-2xl font-bold text-gray-400">BRAND B</div>
+                <div class="text-2xl font-bold text-gray-400">BRAND C</div>
+                <div class="text-2xl font-bold text-gray-400">BRAND D</div>
+                <div class="text-2xl font-bold text-gray-400">BRAND E</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Animated Counters -->
+    <section class="bg-white py-20" id="stats">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-gray-900 mb-2 stat-number">10K+</div>
+                    <div class="text-gray-600 font-medium">Active Creators</div>
+                    <div class="text-gray-400 text-sm mt-1">Growing daily</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-gray-900 mb-2 stat-number">150+</div>
+                    <div class="text-gray-600 font-medium">Product Types</div>
+                    <div class="text-gray-400 text-sm mt-1">More added weekly</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-gray-900 mb-2 stat-number">500K+</div>
+                    <div class="text-gray-600 font-medium">Orders Fulfilled</div>
+                    <div class="text-gray-400 text-sm mt-1">Worldwide shipping</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-gray-900 mb-2 stat-number">4.9/5</div>
+                    <div class="text-gray-600 font-medium">Customer Rating</div>
+                    <div class="text-gray-400 text-sm mt-1">From 5,000+ reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Video Section -->
+    <section class="container mx-auto px-6 py-24" id="demo-video">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">See it in action</h2>
+                <p class="text-xl text-gray-600">Watch how easy it is to create and sell your first product</p>
+            </div>
+            <div class="bg-gray-100 rounded-3xl overflow-hidden hover-lift">
+                <div class="video-container">
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-200">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <p class="text-gray-600 font-medium">Click to play demo video</p>
+                            <p class="text-gray-500 text-sm mt-1">2:30 minutes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mx-auto px-6 py-24" id="features">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Everything you need to succeed</h2>
+                <p class="text-xl text-gray-600">Simple tools for complex business needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Feature 1 -->
+                <div class="border border-gray-200 rounded-3xl p-10 hover-lift">
+                    <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Lightning Fast Setup</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                        Upload your design, select products, and start selling in under 5 minutes. No technical skills required.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Drag & drop interface
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Automatic file optimization
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Instant mockup generation
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="border border-gray-200 rounded-3xl p-10 hover-lift">
+                    <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Global Fulfillment</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                        We print and ship worldwide from 6 production facilities. Fast delivery, premium quality guaranteed.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Ships to 180+ countries
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Average 3-5 days delivery
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Real-time tracking
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="border border-gray-200 rounded-3xl p-10 hover-lift">
+                    <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Transparent Pricing</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                        No hidden fees. You set your profit margins. We handle production costs and show you real-time calculations.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            No monthly fees
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            100% profit margin control
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Instant payout available
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="border border-gray-200 rounded-3xl p-10 hover-lift">
+                    <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality Guaranteed</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                        Premium materials, professional printing. Every product is quality-checked before shipping to your customers.
+                    </p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            DTG & DTF printing
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Eco-friendly materials
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            30-day quality guarantee
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery Carousel -->
+    <section class="bg-gray-50 py-24" id="products">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">150+ products to choose from</h2>
+                <p class="text-xl text-gray-600">High-quality merchandise for every creator</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto overflow-x-auto carousel flex space-x-6 pb-6">
+                <div class="carousel-item flex-shrink-0 w-80">
+                    <div class="bg-white rounded-2xl p-6 hover-lift">
+                        <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center mb-4">
+                            <span class="text-6xl">👕</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Premium T-Shirts</h3>
+                        <p class="text-gray-600 text-sm mb-3">100% organic cotton, 20+ colors</p>
+                        <div class="text-gray-900 font-bold">From $12.95</div>
+                    </div>
+                </div>
+                <div class="carousel-item flex-shrink-0 w-80">
+                    <div class="bg-white rounded-2xl p-6 hover-lift">
+                        <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center mb-4">
+                            <span class="text-6xl">🧥</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Hoodies</h3>
+                        <p class="text-gray-600 text-sm mb-3">Heavy blend fleece, unisex fit</p>
+                        <div class="text-gray-900 font-bold">From $29.95</div>
+                    </div>
+                </div>
+                <div class="carousel-item flex-shrink-0 w-80">
+                    <div class="bg-white rounded-2xl p-6 hover-lift">
+                        <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center mb-4">
+                            <span class="text-6xl">☕</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Ceramic Mugs</h3>
+                        <p class="text-gray-600 text-sm mb-3">11oz & 15oz, dishwasher safe</p>
+                        <div class="text-gray-900 font-bold">From $9.95</div>
+                    </div>
+                </div>
+                <div class="carousel-item flex-shrink-0 w-80">
+                    <div class="bg-white rounded-2xl p-6 hover-lift">
+                        <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center mb-4">
+                            <span class="text-6xl">📱</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Phone Cases</h3>
+                        <p class="text-gray-600 text-sm mb-3">iPhone & Samsung, durable</p>
+                        <div class="text-gray-900 font-bold">From $14.95</div>
+                    </div>
+                </div>
+                <div class="carousel-item flex-shrink-0 w-80">
+                    <div class="bg-white rounded-2xl p-6 hover-lift">
+                        <div class="bg-gray-100 rounded-xl h-64 flex items-center justify-center mb-4">
+                            <span class="text-6xl">🎨</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Art Prints</h3>
+                        <p class="text-gray-600 text-sm mb-3">Museum quality, multiple sizes</p>
+                        <div class="text-gray-900 font-bold">From $8.95</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <button class="border-2 border-gray-900 text-gray-900 px-8 py-3 rounded-xl font-bold hover:bg-gray-900 hover:text-white transition">
+                    View All Products →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get started in 3 easy steps -->
+    <section class="bg-gray-900 py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold text-white mb-4">Get started in 3 easy steps</h2>
+                <p class="text-xl text-gray-300">Want make your own site? Let's get started.</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+                <!-- Step 1: Sign up for Opera Manufacture -->
+                <div class="text-left">
+                    <div class="mb-8 flex justify-center">
+                        <div class="relative">
+                            <!-- Illustration: Browser window with "WELCOME!" -->
+                            <div class="w-64 h-48 bg-white rounded-2xl shadow-2xl overflow-hidden">
+                                <div class="bg-blue-600 h-16 flex items-center justify-center">
+                                    <span class="text-white font-black text-2xl">WELCOME!</span>
+                                </div>
+                                <div class="p-4 space-y-2">
+                                    <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+                                    <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+                                </div>
+                            </div>
+                            <!-- Star decoration -->
+                            <div class="absolute -left-6 top-1/2 text-4xl">⚡</div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">1. SIGN UP FOR OPERA MANUFACTURE</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Choose from one of our many login options to create your account. Get your Opera Manufacture account setup and your website created. There are no monthly fees and no upfront costs to start.
+                    </p>
+                    <a href="#" class="text-gray-400 hover:text-white transition inline-flex items-center">
+                        Sign up →
+                    </a>
+                </div>
+
+                <!-- Step 2: Customize your site -->
+                <div class="text-left">
+                    <div class="mb-8 flex justify-center">
+                        <div class="relative">
+                            <!-- Illustration: Customization panel -->
+                            <div class="w-64 h-48 bg-white rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
+                                <div class="relative">
+                                    <!-- Font chooser button -->
+                                    <div class="absolute -left-24 top-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold">
+                                        CHOOSE FONT
+                                        <div class="text-xs">Helvetica ▼</div>
+                                    </div>
+                                    <!-- Design canvas -->
+                                    <div class="w-32 h-32 border-4 border-dashed border-gray-300 rounded-xl"></div>
+                                    <!-- Edit icon -->
+                                    <div class="absolute -right-16 bottom-4 w-16 h-16 bg-teal-500 rounded-xl flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">2. CUSTOMIZE YOUR SITE</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Once you're officially on Opera Manufacture, it's time to customize your site. Head to your dashboard and find 'Site Design' to start personalizing your shop. Here, you'll be able to change colors, fonts, add pictures, customize pages, and much more.
+                    </p>
+                    <a href="#" class="text-gray-400 hover:text-white transition inline-flex items-center">
+                        Learn more →
+                    </a>
+                </div>
+
+                <!-- Step 3: Create your products -->
+                <div class="text-left">
+                    <div class="mb-8 flex justify-center">
+                        <img src="C:/Users/HAMZA/Downloads/Personalizzazione-prodotti-con-design-grafico.svg"
+                             alt="Create your products - T-shirt, Mug, Hat with design tools"
+                             class="w-full max-w-lg mx-auto">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">3. CREATE YOUR PRODUCTS</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Find the right product for your community and upload your design. Choose your preferred manufacturing technique — from direct-to-garment (DTG) to to direct-to-film (DTFx) to embroidery to screen-printing.
+                    </p>
+                    <a href="#" class="text-gray-400 hover:text-white transition inline-flex items-center">
+                        Learn more →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="bg-gray-50 py-24" id="pricing">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Simple, transparent pricing</h2>
+                <p class="text-xl text-gray-600">No hidden fees. Pay only when you sell.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <!-- Free Plan -->
+                <div class="bg-white border-2 border-gray-200 rounded-3xl p-10">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Free Forever</h3>
+                    <div class="text-5xl font-bold text-gray-900 mb-6">$0<span class="text-xl text-gray-600">/month</span></div>
+                    <p class="text-gray-600 mb-8">Perfect for getting started</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Unlimited products</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">150+ product types</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Global fulfillment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Basic analytics</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-xl font-bold hover:bg-gray-900 hover:text-white transition">
+                        Start Free
+                    </button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-gray-900 text-white rounded-3xl p-10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-white text-gray-900 px-4 py-1 text-sm font-bold rounded-bl-xl">
+                        POPULAR
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <div class="text-5xl font-bold mb-6">$29<span class="text-xl text-gray-400">/month</span></div>
+                    <p class="text-gray-400 mb-8">For serious creators</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Everything in Free</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Priority fulfillment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Advanced analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Custom branding</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Priority support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-gray-900 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition">
+                        Start Pro Trial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container mx-auto px-6 py-24" id="testimonials">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold text-gray-900 mb-6">Loved by creators worldwide</h2>
+            <p class="text-xl text-gray-600">See what our community has to say</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-gray-50 rounded-2xl p-8 hover-lift">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        ★★★★★
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    "Opera Manufacture made it so easy to launch my merch line. The quality is amazing and my customers love it!"
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                        <div class="font-bold text-gray-900">Sarah Johnson</div>
+                        <div class="text-gray-600 text-sm">Artist & Designer</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-gray-50 rounded-2xl p-8 hover-lift">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        ★★★★★
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    "I've tried other platforms, but Opera Manufacture has the best quality and fastest shipping. Highly recommend!"
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                        <div class="font-bold text-gray-900">Mike Chen</div>
+                        <div class="text-gray-600 text-sm">Content Creator</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-gray-50 rounded-2xl p-8 hover-lift">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        ★★★★★
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    "The mockup generator is incredible. I can see exactly how my designs will look before selling. Game changer!"
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                        <div class="font-bold text-gray-900">Emma Davis</div>
+                        <div class="text-gray-600 text-sm">Graphic Designer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-24" id="faq">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-gray-900 mb-6">Frequently asked questions</h2>
+                    <p class="text-xl text-gray-600">Everything you need to know</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Do I need to pay any upfront costs?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            No! Opera Manufacture is completely free to use. You only pay for production costs when a customer places an order. There are no monthly fees, setup fees, or hidden charges.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">How long does shipping take?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Most orders ship within 2-3 business days after production. Delivery times vary by location but typically take 3-7 days domestically and 7-14 days internationally.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">What file formats do you accept?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            We accept PNG, JPG, SVG, and PDF files. For best print quality, we recommend uploading high-resolution images (at least 2000x2000px for raster images).
+                        </p>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Can I see samples before selling?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Yes! You can order samples at cost price to check quality before selling to customers. We also provide instant digital mockups for all products.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">How do I get paid?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            When a customer orders, you receive your profit margin directly to your connected payment account. Payouts are processed weekly via PayPal, Stripe, or bank transfer.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">What if a customer has an issue?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Our customer support team handles all order issues, returns, and refunds. You can focus on creating while we take care of customer service.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-4">Still have questions?</p>
+                    <button class="border-2 border-gray-900 text-gray-900 px-8 py-3 rounded-xl font-bold hover:bg-gray-900 hover:text-white transition">
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container mx-auto px-6 py-24">
+        <div class="max-w-4xl mx-auto bg-gray-900 rounded-3xl p-16 text-center">
+            <h2 class="text-5xl font-bold text-white mb-6">
+                Ready to start your business?
+            </h2>
+            <p class="text-xl text-gray-300 mb-10">
+                Join thousands of creators making money from their designs.
+            </p>
+            <button class="bg-white text-gray-900 px-12 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition hover-lift">
+                Create Your Store Free →
+            </button>
+            <p class="text-gray-400 mt-6">No credit card required • Cancel anytime • Free forever</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-5 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">OM</span>
+                        </div>
+                        <span class="text-gray-900 font-bold">Opera Manufacture</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">Create and sell custom products without inventory.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition">
+                            <span class="text-gray-600">𝕏</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition">
+                            <span class="text-gray-600">in</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition">
+                            <span class="text-gray-600">IG</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#features" class="hover:text-gray-900 transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-gray-900 transition">Pricing</a></li>
+                        <li><a href="#products" class="hover:text-gray-900 transition">Products</a></li>
+                        <li><a href="#" class="hover:text-gray-900 transition">Integrations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900 transition">About</a></li>
+                        <li><a href="#" class="hover:text-gray-900 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-900 transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-gray-900 transition">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 font-bold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900 transition">Help Center</a></li>
+                        <li><a href="#" class="hover:text-gray-900 transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-gray-900 transition">Status</a></li>
+                        <li><a href="#faq" class="hover:text-gray-900 transition">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <div class="text-gray-600 text-sm mb-4 md:mb-0">
+                    © 2025 Opera Manufacture. All rights reserved.
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-600">
+                    <a href="#" class="hover:text-gray-900 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-900 transition">Terms of Service</a>
+                    <a href="#" class="hover:text-gray-900 transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Prodotti - Opera Manufacture</title>
+
+    <!-- Opera Manufacture Analytics -->
+    <script src="opera-analytics.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #4A90E2;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --hover-bg: #f5f5f5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 70px;
+            padding: 60px 40px;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filters */
+        .filters-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .filter-sidebar {
+            flex: 0 0 280px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .filter-group {
+            margin-bottom: 32px;
+        }
+
+        .filter-group h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .filter-option input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filter-option label {
+            font-size: 15px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Products Grid */
+        .products-container {
+            flex: 1;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .results-count {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .sort-dropdown {
+            padding: 10px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-colors {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .product-info {
+            padding: 24px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .product-features {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            padding: 4px 10px;
+            background: #f0f0f0;
+            border-radius: 16px;
+            font-size: 11px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Categories */
+        .categories-tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            background: white;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .filters-section {
+                flex-direction: column;
+            }
+
+            .filter-sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .page-header h1 {
+                font-size: 40px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="FOURTHWALL_HOMEPAGE.html" class="logo">Opera Manufacture</a>
+            <a href="FOURTHWALL_HOMEPAGE.html" class="back-link">← Torna alla Home</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Catalogo Prodotti</h1>
+            <p>Scopri la nostra selezione completa di prodotti personalizzabili di alta qualità</p>
+        </div>
+
+        <!-- Categories Tabs -->
+        <div class="categories-tabs">
+            <button class="category-tab active">Tutti</button>
+            <button class="category-tab">Abbigliamento</button>
+            <button class="category-tab">Accessori</button>
+            <button class="category-tab">Drinkware</button>
+            <button class="category-tab">Casa</button>
+            <button class="category-tab">Tech</button>
+            <button class="category-tab">Prodotti Unici</button>
+        </div>
+
+        <div class="filters-section">
+            <!-- Sidebar Filters -->
+            <aside class="filter-sidebar">
+                <div class="filter-group">
+                    <h3>Categoria</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="tshirts" checked>
+                        <label for="tshirts">T-Shirt (42)</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="hoodies">
+                        <label for="hoodies">Felpe & Hoodie (28)</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="hats">
+                        <label for="hats">Cappelli (15)</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="mugs">
+                        <label for="mugs">Tazze (12)</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="accessories">
+                        <label for="accessories">Accessori (24)</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Prezzo</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="price1">
+                        <label for="price1">€0 - €15</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="price2">
+                        <label for="price2">€15 - €30</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="price3">
+                        <label for="price3">€30 - €50</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="price4">
+                        <label for="price4">€50+</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Metodo</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="printed">
+                        <label for="printed">Stampato</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="embroidered">
+                        <label for="embroidered">Ricamato</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sublimation">
+                        <label for="sublimation">Sublimazione</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Brand</h3>
+                    <div class="filter-option">
+                        <input type="checkbox" id="bella">
+                        <label for="bella">Bella+Canvas</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="gildan">
+                        <label for="gildan">Gildan</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="comfort">
+                        <label for="comfort">Comfort Colors</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="lane">
+                        <label for="lane">Lane Seven</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Products Grid -->
+            <div class="products-container">
+                <div class="products-header">
+                    <span class="results-count">124 prodotti trovati</span>
+                    <select class="sort-dropdown">
+                        <option>Consigliati</option>
+                        <option>Prezzo: Basso → Alto</option>
+                        <option>Prezzo: Alto → Basso</option>
+                        <option>Più Popolari</option>
+                        <option>Più Recenti</option>
+                    </select>
+                </div>
+
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-badge">Bestseller</div>
+                        <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            👕
+                            <div class="product-colors">
+                                <div class="color-dot" style="background: #000000;"></div>
+                                <div class="color-dot" style="background: #ffffff;"></div>
+                                <div class="color-dot" style="background: #0066cc;"></div>
+                                <div class="color-dot" style="background: #cc0000;"></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">T-Shirt Premium</div>
+                            <h3 class="product-title">Bella+Canvas 3001</h3>
+                            <p class="product-description">T-shirt unisex in cotone morbido, vestibilità moderna</p>
+                            <div class="product-price">Da €9,50</div>
+                            <div class="product-features">
+                                <span class="feature-tag">100% Cotone</span>
+                                <span class="feature-tag">Stampabile</span>
+                                <span class="feature-tag">No minimi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            🧥
+                            <div class="product-colors">
+                                <div class="color-dot" style="background: #1a1a1a;"></div>
+                                <div class="color-dot" style="background: #8b4513;"></div>
+                                <div class="color-dot" style="background: #2c5f8d;"></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Hoodie Premium</div>
+                            <h3 class="product-title">Lane Seven Unisex</h3>
+                            <p class="product-description">Felpa con cappuccio pesante, qualità eccezionale</p>
+                            <div class="product-price">Da €28,90</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Cotone Pesante</span>
+                                <span class="feature-tag">Ricamabile</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-badge">Nuovo</div>
+                        <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            ☕
+                            <div class="product-colors">
+                                <div class="color-dot" style="background: #ffffff;"></div>
+                                <div class="color-dot" style="background: #000000;"></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Drinkware</div>
+                            <h3 class="product-title">Tazza Ceramica 11oz</h3>
+                            <p class="product-description">Tazza in ceramica premium con stampa ad alta definizione</p>
+                            <div class="product-price">Da €7,20</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Lavabile</span>
+                                <span class="feature-tag">Sublimazione</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            🧢
+                            <div class="product-colors">
+                                <div class="color-dot" style="background: #000000;"></div>
+                                <div class="color-dot" style="background: #ffffff;"></div>
+                                <div class="color-dot" style="background: #8b4513;"></div>
+                                <div class="color-dot" style="background: #006400;"></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Cappelli</div>
+                            <h3 class="product-title">Dad Hat Classic</h3>
+                            <p class="product-description">Cappellino stile dad hat con chiusura regolabile</p>
+                            <div class="product-price">Da €12,95</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Ricamato</span>
+                                <span class="feature-tag">Regolabile</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            👖
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Pants</div>
+                            <h3 class="product-title">Joggers Premium</h3>
+                            <p class="product-description">Pantaloni joggers in felpa morbida e confortevole</p>
+                            <div class="product-price">Da €23,20</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Cotone</span>
+                                <span class="feature-tag">Tasche</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <div class="product-badge">Limited</div>
+                        <div class="product-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                            🎨
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Prodotti Unici</div>
+                            <h3 class="product-title">Peluche Personalizzato</h3>
+                            <p class="product-description">Peluche custom design con il tuo personaggio</p>
+                            <div class="product-price">Su preventivo</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Custom</span>
+                                <span class="feature-tag">Alta qualità</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            👚
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">T-Shirt Premium</div>
+                            <h3 class="product-title">Comfort Colors 1717</h3>
+                            <p class="product-description">T-shirt oversized in cotone tinto in capo</p>
+                            <div class="product-price">Da €11,50</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Vintage</span>
+                                <span class="feature-tag">Oversize</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                            🎒
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Accessori</div>
+                            <h3 class="product-title">Zaino Canvas</h3>
+                            <p class="product-description">Zaino in canvas resistente con stampa personalizzata</p>
+                            <div class="product-price">Da €24,90</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Canvas</span>
+                                <span class="feature-tag">Durevole</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <div class="product-badge">Eco-Friendly</div>
+                        <div class="product-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            🧦
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Accessori</div>
+                            <h3 class="product-title">Calzini Custom</h3>
+                            <p class="product-description">Calzini personalizzabili con design full print</p>
+                            <div class="product-price">Da €8,90</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Full Print</span>
+                                <span class="feature-tag">Comodi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);">
+                            📱
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Tech</div>
+                            <h3 class="product-title">Cover Smartphone</h3>
+                            <div class="product-description">Cover personalizzabile per tutti i modelli</div>
+                            <div class="product-price">Da €12,50</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Protettiva</span>
+                                <span class="feature-tag">HD Print</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 11 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
+                            🖼️
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Casa</div>
+                            <h3 class="product-title">Poster Premium</h3>
+                            <p class="product-description">Poster in carta premium con stampa HD</p>
+                            <div class="product-price">Da €14,90</div>
+                            <div class="product-features">
+                                <span class="feature-tag">HD</span>
+                                <span class="feature-tag">Varie misure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 12 -->
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);">
+                            🔖
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Accessori</div>
+                            <h3 class="product-title">Pin Smaltato</h3>
+                            <p class="product-description">Pin in metallo smaltato personalizzato</p>
+                            <div class="product-price">Da €3,50</div>
+                            <div class="product-features">
+                                <span class="feature-tag">Metallo</span>
+                                <span class="feature-tag">Custom</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Category tabs functionality
+        const tabs = document.querySelectorAll('.category-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Product card click
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('input')) {
+                    const productTitle = card.querySelector('.product-title').textContent;
+                    const productCategory = card.querySelector('.product-category').textContent;
+                    const productPrice = card.querySelector('.product-price').textContent;
+
+                    // Track product view
+                    if (window.OperaAnalytics) {
+                        window.OperaAnalytics.tracking.viewProduct({
+                            id: productTitle.toLowerCase().replace(/\s+/g, '-'),
+                            name: productTitle,
+                            category: productCategory,
+                            price: parseFloat(productPrice.match(/[\d,]+/)?.[0].replace(',', '.')) || 0
+                        });
+                    }
+
+                    window.location.href = 'FOURTHWALL_PRODUCT_DETAIL.html';
+                }
+            });
+        });
+
+        // Sort dropdown
+        const sortDropdown = document.querySelector('.sort-dropdown');
+        sortDropdown.addEventListener('change', (e) => {
+            console.log('Sorting by:', e.target.value);
+            // Add sorting logic here
+        });
+
+        // Filter checkboxes
+        const checkboxes = document.querySelectorAll('.filter-option input');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                console.log('Filter changed');
+                // Add filter logic here
+            });
+        });
+    </script>
+</body>
+</html>

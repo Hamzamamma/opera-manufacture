@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="it" class="w-mod-js w-mod-ix" data-wf-domain="operamanufacture.com" data-wf-page="om-homepage" data-wf-site="om-site">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opera Manufacture - Prodotti personalizzati per creator</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Opera Manufacture permette ai creator digitali di trasformare i loro brand personali in attività commerciali. La nostra piattaforma all-in-one per creator offre una soluzione facile da usare con gli strumenti necessari per costruire, coinvolgere e guadagnare.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Opera Manufacture - La migliore piattaforma per creator">
+    <meta property="og:description" content="Crea e vendi prodotti personalizzati, offri abbonamenti e costruisci un pubblico fedele con Opera Manufacture.">
+    <meta property="og:image" content="https://cdn.operamanufacture.com/assets/og-image.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Opera Manufacture">
+    <meta property="twitter:description" content="Lancia il tuo shop online in pochi minuti. Zero rischi, nessun canone mensile.">
+
+    <!-- Prefetch important pages -->
+    <link rel="prefetch" href="FOURTHWALL_PRODUCTS.html" fetchpriority="high" as="document">
+    <link rel="prefetch" href="FOURTHWALL_AUTH.html" fetchpriority="high" as="document">
+    <link rel="prefetch" href="FOURTHWALL_PRODUCT_DETAIL.html" fetchpriority="high" as="document">
+    <link rel="canonical" href="https://operamanufacture.com/">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://cdn.operamanufacture.com/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://cdn.operamanufacture.com/apple-touch-icon.png">
+
+    <!-- Opera Manufacture Analytics -->
+    <script src="opera-analytics.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=OM-XXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'OM-XXXXXXX');
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Opera Manufacture",
+        "legalName": "Opera Manufacture, Inc.",
+        "url": "https://operamanufacture.com",
+        "logo": "https://cdn.operamanufacture.com/logo.png",
+        "email": "hello@operamanufacture.com",
+        "description": "Opera Manufacture permette ai creator digitali di trasformare i loro brand personali in attività commerciali."
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #4A90E2;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --hover-bg: #f5f5f5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 600px;
+            display: none;
+            margin-top: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .nav-item:hover .dropdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .dropdown-section h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .dropdown-link {
+            display: block;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .dropdown-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--hover-bg);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 120px 40px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .hero .btn-primary {
+            padding: 18px 40px;
+            font-size: 16px;
+        }
+
+        .hero-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 15px;
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: var(--text-secondary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+        }
+
+        .product-info {
+            padding: 24px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .product-features {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            padding: 4px 12px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-primary);
+        }
+
+        /* Value Propositions */
+        .value-section {
+            background: #f8f9fa;
+            padding: 100px 40px;
+        }
+
+        .value-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+        }
+
+        .value-item h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .value-item p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Creator Spotlight */
+        .creator-section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .creator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .creator-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .creator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .creator-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .creator-info {
+            padding: 24px;
+        }
+
+        .creator-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .creator-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            padding: 100px 40px;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 30px;
+        }
+
+        .feature-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #e0e0e0;
+            min-width: 60px;
+        }
+
+        .feature-content h3 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .feature-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 40px;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-section .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">Opera Manufacture</a>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <span class="nav-link">Funzionalità</span>
+                    <div class="dropdown">
+                        <div class="dropdown-section">
+                            <h4>Costruisci il tuo brand</h4>
+                            <a href="#shops" class="dropdown-link">Negozi - Design e vendi prodotti</a>
+                            <a href="#websites" class="dropdown-link">Siti Web - Pagina completamente brandizzata</a>
+                            <a href="#memberships" class="dropdown-link">Abbonamenti - Guadagni ricorrenti</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Features</h4>
+                            <a href="#design-sell" class="dropdown-link">Crea merch di qualità</a>
+                            <a href="#bespoke" class="dropdown-link">Prodotti su misura</a>
+                            <a href="#sell-own" class="dropdown-link">Vendi i tuoi prodotti</a>
+                            <a href="#digital" class="dropdown-link">Vendi prodotti digitali</a>
+                            <a href="#video" class="dropdown-link">Vendi video in abbonamento</a>
+                            <a href="#mobile" class="dropdown-link">Lancia la tua app mobile</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Perfetto per</h4>
+                            <a href="#" class="dropdown-link">YouTuber & Content Creator</a>
+                            <a href="#" class="dropdown-link">Streamer Twitch</a>
+                            <a href="#" class="dropdown-link">TikToker</a>
+                            <a href="#" class="dropdown-link">Musicisti & Artisti</a>
+                            <a href="#" class="dropdown-link">Podcaster</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#pricing" class="nav-link">Prezzi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="FOURTHWALL_PRODUCTS.html" class="nav-link">Catalogo Prodotti</a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#" class="btn btn-secondary">Accedi</a>
+                <a href="#" class="btn btn-primary">Inizia Ora</a>
+            </div>
+
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Prodotti e negozi che la tua community adorerà</h1>
+        <p>Unisciti a 200.000+ creator che usano Opera Manufacture per creare prodotti di alta qualità e negozi straordinari.</p>
+        <div class="hero-cta">
+            <a href="#get-started" class="btn btn-primary">Inizia Ora</a>
+        </div>
+        <p class="hero-note">Nessun canone mensile. Nessuna carta di credito richiesta.</p>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="product-showcase">
+        <div class="section-header">
+            <h2>Prodotti di qualità senza complicazioni</h2>
+            <p>Crea prodotti personalizzati senza minimi d'ordine</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">👕</div>
+                <div class="product-info">
+                    <div class="product-category">Abbigliamento</div>
+                    <h3 class="product-title">T-Shirt Premium</h3>
+                    <p class="product-price">Da €9,50+</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Stampato</span>
+                        <span class="feature-tag">Ricamato</span>
+                        <span class="feature-tag">No minimi</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🧥</div>
+                <div class="product-info">
+                    <div class="product-category">Abbigliamento</div>
+                    <h3 class="product-title">Felpe & Hoodie</h3>
+                    <p class="product-price">Da €22,20+</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Cotton Heritage</span>
+                        <span class="feature-tag">Lane Seven</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">☕</div>
+                <div class="product-info">
+                    <div class="product-category">Drinkware</div>
+                    <h3 class="product-title">Tazze & Borracce</h3>
+                    <p class="product-price">Da €3,42+</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Sublimazione</span>
+                        <span class="feature-tag">Personalizzabile</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">🧢</div>
+                <div class="product-info">
+                    <div class="product-category">Accessori</div>
+                    <h3 class="product-title">Cappelli & Berretti</h3>
+                    <p class="product-price">Da €12,95+</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Dad hats</span>
+                        <span class="feature-tag">Trucker</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">👖</div>
+                <div class="product-info">
+                    <div class="product-category">Abbigliamento</div>
+                    <h3 class="product-title">Joggers & Pants</h3>
+                    <p class="product-price">Da €23,20+</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Lane Seven</span>
+                        <span class="feature-tag">Independent</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">🎨</div>
+                <div class="product-info">
+                    <div class="product-category">Prodotti Unici</div>
+                    <h3 class="product-title">Peluche & Pin</h3>
+                    <p class="product-price">Personalizzati</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Plushies</span>
+                        <span class="feature-tag">Enamel pins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions -->
+    <section class="value-section">
+        <div class="value-container">
+            <div class="value-item">
+                <div class="value-icon">🎨</div>
+                <h3>Crea prodotti bellissimi</h3>
+                <p>Design intuitivo e personalizzazione completa. Nessun minimo d'ordine richiesto.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🛍️</div>
+                <h3>Lancia il tuo negozio</h3>
+                <p>Builder no-code per creare il tuo shop perfetto in pochi minuti.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">📦</div>
+                <h3>Gestiamo tutto noi</h3>
+                <p>Produzione, spedizione e supporto clienti completamente gestiti da noi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-grid">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Tutto quello di cui hai bisogno</h2>
+                <p>Una piattaforma completa per far crescere il tuo brand</p>
+            </div>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-number">01</div>
+                    <div class="feature-content">
+                        <h3>Qualità Premium</h3>
+                        <p>Lavoriamo solo con i migliori fornitori per garantire prodotti di altissima qualità che la tua community apprezzerà.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">02</div>
+                    <div class="feature-content">
+                        <h3>Nessun Rischio</h3>
+                        <p>Stampa on-demand senza minimi d'ordine. Produciamo solo quando vendi, eliminando il rischio di inventario.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">03</div>
+                    <div class="feature-content">
+                        <h3>Spedizione Veloce</h3>
+                        <p>Spedizioni rapide in tutto il mondo con tracking completo e gestione automatica degli ordini.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-number">04</div>
+                    <div class="feature-content">
+                        <h3>Supporto Dedicato</h3>
+                        <p>Il nostro team si occupa di tutto il supporto clienti, così tu puoi concentrarti sul tuo contenuto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Spotlight -->
+    <section class="creator-section">
+        <div class="section-header">
+            <h2>Unisciti a migliaia di creator</h2>
+            <p>Scopri cosa stanno creando con Opera Manufacture</p>
+        </div>
+
+        <div class="creator-grid">
+            <div class="creator-card">
+                <div class="creator-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <div class="creator-info">
+                    <h3 class="creator-name">@creatorname</h3>
+                    <p class="creator-description">"La qualità dei prodotti è incredibile. I miei fan adorano il merchandise!"</p>
+                </div>
+            </div>
+
+            <div class="creator-card">
+                <div class="creator-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="creator-info">
+                    <h3 class="creator-name">@streamer</h3>
+                    <p class="creator-description">"Setup facilissimo e supporto eccezionale. Consigliato a tutti i creator!"</p>
+                </div>
+            </div>
+
+            <div class="creator-card">
+                <div class="creator-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="creator-info">
+                    <h3 class="creator-name">@musician</h3>
+                    <p class="creator-description">"Finalmente posso offrire merch di qualità ai miei fan senza preoccupazioni."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Pronto a iniziare?</h2>
+        <p>Unisciti a migliaia di creator che hanno già lanciato il loro brand</p>
+        <a href="#get-started" class="btn btn-primary">Inizia Gratuitamente</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Opera Manufacture</h3>
+                <p>La piattaforma completa per creator che vogliono monetizzare con prodotti di qualità.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">▶</a>
+                    <a href="#" class="social-link">🎵</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Prodotti</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Merchandising</a></li>
+                    <li><a href="#">Prodotti Custom</a></li>
+                    <li><a href="#">Digitali</a></li>
+                    <li><a href="#">Abbonamenti</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Risorse</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Centro Assistenza</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Ispirazioni</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Azienda</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Chi Siamo</a></li>
+                    <li><a href="#">Carriere</a></li>
+                    <li><a href="#">Contatti</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Legale</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Termini di Servizio</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Opera Manufacture. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Track product card clicks
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const productTitle = this.querySelector('.product-title').textContent;
+                const productCategory = this.querySelector('.product-category').textContent;
+                const productPrice = this.querySelector('.product-price').textContent;
+
+                // Track product view
+                if (window.OperaAnalytics) {
+                    window.OperaAnalytics.tracking.viewProduct({
+                        id: productTitle.toLowerCase().replace(/\s+/g, '-'),
+                        name: productTitle,
+                        category: productCategory,
+                        price: parseFloat(productPrice.match(/[\d,]+/)?.[0].replace(',', '.')) || 0
+                    });
+                }
+            });
+        });
+
+        // Track CTA button clicks
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const buttonText = this.textContent.trim();
+
+                if (window.OperaAnalytics) {
+                    window.OperaAnalytics.tracking.customEvent('cta_click', {
+                        button_text: buttonText,
+                        page_section: this.closest('section')?.className || 'unknown'
+                    });
+                }
+            });
+        });
+
+        // Initialize Opera Analytics
+        if (window.OperaAnalytics) {
+            window.OperaAnalytics.init({
+                enabled: true,
+                apiEndpoint: '/api/analytics',
+                batchSize: 10,
+                flushInterval: 5000
+            });
+        }
+
+        // Track login/signup button clicks
+        document.querySelectorAll('.btn-secondary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.textContent.includes('Accedi')) {
+                    e.preventDefault();
+                    window.location.href = 'FOURTHWALL_AUTH.html';
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.textContent.includes('Inizia')) {
+                    e.preventDefault();
+                    window.location.href = 'FOURTHWALL_AUTH.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
