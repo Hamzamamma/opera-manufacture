@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
+import { Logo } from './index';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -9,14 +10,12 @@ const Header = () => {
   const [learnOpen, setLearnOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 w-full z-50 shadow-sm">
+    <header className="bg-white border-b border-gray-100 sticky top-0 w-full z-50">
       <div className="section-container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h1 className="text-2xl font-bold text-brand-black lowercase">
-              fourthwall
-            </h1>
+            <Logo variant="default" className="scale-75" />
           </Link>
 
           {/* Desktop Navigation */}

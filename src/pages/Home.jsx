@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { FiCheck, FiShoppingBag, FiHome, FiUsers, FiTrendingUp, FiGlobe, FiZap, FiHeart } from 'react-icons/fi';
+import { Button, Heading, Link } from '../components';
 
 const Home = () => {
   return (
@@ -8,20 +9,24 @@ const Home = () => {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-b from-white to-gray-50">
         <div className="section-container">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="heading-xl mb-6 animate-fade-in">
-              Products and shops your community will love
+          <div className="text-center max-w-5xl mx-auto">
+            <h1 className="text-6xl font-medium mb-6 animate-fade-in">
+              <span className="highlight-green">Products</span> and shops your <span className="highlight-green">community</span> will love
             </h1>
-            <p className="text-body text-xl mb-8">
-              Join 200,000+ creators building high-quality products and stunning shops with Fourthwall
+            <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
+              Join 200,000+ creators building high-quality products and stunning shops with OPERA Manufacture
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
-              <Link to="/start" className="btn-primary text-lg px-8 py-4">
-                Start now
-              </Link>
-              <Link to="/examples" className="btn-outline text-lg px-8 py-4">
-                View examples
-              </Link>
+              <RouterLink to="/start">
+                <Button variant="primary" className="text-lg">
+                  Start now
+                </Button>
+              </RouterLink>
+              <RouterLink to="/examples">
+                <Button variant="secondary" className="text-lg">
+                  View examples
+                </Button>
+              </RouterLink>
             </div>
             <p className="text-sm text-gray-500">
               No monthly fees. No credit card required.
@@ -43,8 +48,10 @@ const Home = () => {
       <section className="section-padding">
         <div className="section-container">
           <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">Quality products without the headache</h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <h2 className="text-5xl font-medium mb-4">
+              Quality <span className="highlight-green">products</span> without the <span className="highlight-green">headache</span>
+            </h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               We make it easy to create and sell premium merchandise that your fans will love
             </p>
           </div>
@@ -59,8 +66,8 @@ const Home = () => {
               <p className="text-body mb-6">
                 We partner with top suppliers for hundreds of products—from apparel to plushies to hot sauce—with no minimums
               </p>
-              <Link to="/products" className="link">
-                Create your first product →
+              <Link variant="simple-green" href="/products">
+                Create your first product
               </Link>
             </div>
 
@@ -73,8 +80,8 @@ const Home = () => {
               <p className="text-body mb-6">
                 Build a shop that reflects your brand with our no-code builder. Fans can buy or redeem products easily
               </p>
-              <Link to="/websites" className="link">
-                Create your own shop →
+              <Link variant="simple-green" href="/websites">
+                Create your own shop
               </Link>
             </div>
 
@@ -87,8 +94,8 @@ const Home = () => {
               <p className="text-body mb-6">
                 From production and shipping to customer support, we're your partner every step of the way
               </p>
-              <Link to="/start" className="link">
-                Start now →
+              <Link variant="simple-green" href="/start">
+                Start now
               </Link>
             </div>
           </div>
@@ -119,8 +126,10 @@ const Home = () => {
       <section className="section-padding">
         <div className="section-container">
           <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">We make e-commerce easy, no experience necessary</h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <h2 className="text-5xl font-medium mb-4">
+              We make <span className="highlight-black">e-commerce</span> easy, <span className="highlight-green">no experience</span> necessary
+            </h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Manage your entire business from one intuitive dashboard
             </p>
           </div>
@@ -223,12 +232,16 @@ const Home = () => {
                 With integrated memberships, you can offer exclusive content, perks, and community access—growing recurring revenue and rewarding your loyal supporters
               </p>
               <div className="flex gap-4">
-                <Link to="/memberships" className="btn-primary">
-                  Learn more
-                </Link>
-                <Link to="/compare/patreon" className="btn-outline">
-                  Compare to Patreon
-                </Link>
+                <RouterLink to="/memberships">
+                  <Button variant="primary">
+                    Learn more
+                  </Button>
+                </RouterLink>
+                <RouterLink to="/compare/patreon">
+                  <Button variant="secondary">
+                    Compare to Patreon
+                  </Button>
+                </RouterLink>
               </div>
             </div>
           </div>
@@ -328,14 +341,16 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="section-padding bg-brand-green text-white">
+      <section className="section-padding bg-lime-300">
         <div className="section-container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Build your brand, audience, and income
+          <h2 className="text-5xl md:text-6xl font-medium mb-8 text-black">
+            Build your <span className="highlight-black">brand</span>, audience, and <span className="highlight-black">income</span>
           </h2>
-          <Link to="/start" className="inline-flex items-center bg-white text-brand-green px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">
-            Get started →
-          </Link>
+          <RouterLink to="/start">
+            <Button variant="primary" className="text-lg">
+              Get started
+            </Button>
+          </RouterLink>
         </div>
       </section>
     </div>
