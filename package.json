@@ -1,51 +1,35 @@
 {
-    "name": "opera-manufacture",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev --turbopack",
-        "build": "next build",
-        "start": "next start"
-    },
-    "dependencies": {
-        "@protobufjs/aspromise": "^1.1.2",
-        "@protobufjs/base64": "^1.1.2",
-        "@protobufjs/codegen": "^2.0.4",
-        "@protobufjs/eventemitter": "^1.1.0",
-        "@protobufjs/fetch": "^1.1.0",
-        "@protobufjs/float": "^1.0.2",
-        "@protobufjs/inquire": "^1.1.0",
-        "@protobufjs/path": "^1.1.2",
-        "@protobufjs/pool": "^1.1.0",
-        "@protobufjs/utf8": "^1.1.0",
-        "@tailwindcss/postcss": "^4.1.11",
-        "@tailwindcss/typography": "^0.5.16",
-        "@untitledui/file-icons": "^0.0.8",
-        "@untitledui/icons": "^0.0.19",
-        "axios": "^1.12.2",
-        "firebase": "^11.2.0",
-        "motion": "^12.23.12",
-        "next": "^15.4.6",
-        "next-themes": "^0.4.6",
-        "react": "19.1.1",
-        "react-aria": "^3.42.0",
-        "react-aria-components": "^1.12.0",
-        "react-dom": "19.1.1",
-        "react-hotkeys-hook": "^5.1.0",
-        "tailwind-merge": "^3.3.1",
-        "tailwindcss": "^4.1.11",
-        "tailwindcss-animate": "^1.0.7",
-        "tailwindcss-react-aria-components": "^2.0.0"
-    },
-    "devDependencies": {
-        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-        "@types/node": "^24.2.1",
-        "@types/react": "^19.1.9",
-        "@types/react-dom": "^19.1.7",
-        "postcss": "^8.5.6",
-        "postcss-loader": "^8.1.1",
-        "prettier": "^3.6.2",
-        "prettier-plugin-tailwindcss": "^0.6.14",
-        "typescript": "^5.9.2"
-    }
+  "name": "fourthwall-clone",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^12.4.0",
+    "framer-motion": "^12.23.24",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.9.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14",
+    "vite": "^7.1.7"
+  }
 }
