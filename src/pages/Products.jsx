@@ -4,9 +4,11 @@ import { FiSearch, FiGrid, FiFilter } from 'react-icons/fi';
 import ProductCard from '../components/product/ProductCard';
 import ProductFilters from '../components/product/ProductFilters';
 import { products } from '../data/products';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../components/product/product-styles.css';
 
 const Products = () => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('newest');
   const [viewMode, setViewMode] = useState('grid-3');
@@ -139,11 +141,10 @@ const Products = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mb-4">
-              Catalogo Prodotti
+              {t('products.title')}
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl">
-              Scopri la nostra collezione esclusiva di prodotti print-on-demand.
-              Design unici e qualità premium.
+              {t('products.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -160,7 +161,7 @@ const Products = () => {
                 <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
                   type="text"
-                  placeholder="Cerca prodotti..."
+                  placeholder={t('products.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
@@ -177,10 +178,10 @@ const Products = () => {
               onChange={(e) => setSortBy(e.target.value)}
               className="px-6 py-4 bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-xl text-white focus:outline-none focus:border-pink-500/50 focus:ring-2 focus:ring-pink-500/20 transition-all duration-300 cursor-pointer"
             >
-              <option value="newest">Più Recenti</option>
-              <option value="popular">Più Popolari</option>
-              <option value="price-low">Prezzo: Basso-Alto</option>
-              <option value="price-high">Prezzo: Alto-Basso</option>
+              <option value="newest">{t('products.sortNewest')}</option>
+              <option value="popular">{t('products.sortPopular')}</option>
+              <option value="price-low">{t('products.sortPriceLow')}</option>
+              <option value="price-high">{t('products.sortPriceHigh')}</option>
             </select>
 
             {/* View Mode Toggle */}
@@ -216,8 +217,8 @@ const Products = () => {
           {/* Results Count */}
           <div className="mt-4 flex items-center justify-between">
             <p className="text-gray-400">
-              Mostrando <span className="text-white font-bold">{currentProducts.length}</span> di{' '}
-              <span className="text-white font-bold">{filteredProducts.length}</span> prodotti
+              {t('products.showing')} <span className="text-white font-bold">{currentProducts.length}</span> {t('products.of')}{' '}
+              <span className="text-white font-bold">{filteredProducts.length}</span> {t('products.productsText')}
             </p>
             {(filters.categories.length > 0 ||
               filters.colors.length > 0 ||
@@ -231,7 +232,7 @@ const Products = () => {
                 onClick={handleClearFilters}
                 className="text-sm text-pink-400 hover:text-pink-300 transition-colors duration-300"
               >
-                Cancella tutti i filtri
+                {t('products.clearAllFilters')}
               </motion.button>
             )}
           </div>
@@ -287,7 +288,7 @@ const Products = () => {
                       disabled={currentPage === 1}
                       className="px-6 py-3 rounded-xl bg-gray-900/80 text-white border border-gray-700/50 disabled:opacity-50 disabled:cursor-not-allowed hover:border-pink-500/50 transition-all duration-300"
                     >
-                      Precedente
+                      {t('products.previous')}
                     </motion.button>
 
                     <div className="flex gap-2">
@@ -315,7 +316,7 @@ const Products = () => {
                       disabled={currentPage === totalPages}
                       className="px-6 py-3 rounded-xl bg-gray-900/80 text-white border border-gray-700/50 disabled:opacity-50 disabled:cursor-not-allowed hover:border-pink-500/50 transition-all duration-300"
                     >
-                      Successivo
+                      {t('products.next')}
                     </motion.button>
                   </div>
                 )}
@@ -330,10 +331,10 @@ const Products = () => {
                   <FiSearch className="text-pink-500" size={40} />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Nessun prodotto trovato
+                  {t('products.noProductsFound')}
                 </h3>
                 <p className="text-gray-400 mb-6">
-                  Prova a modificare i filtri o la ricerca
+                  {t('products.noProductsDesc')}
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -341,7 +342,7 @@ const Products = () => {
                   onClick={handleClearFilters}
                   className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold rounded-xl shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
                 >
-                  Cancella Filtri
+                  {t('products.clearFilters')}
                 </motion.button>
               </motion.div>
             )}

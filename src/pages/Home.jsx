@@ -2,8 +2,11 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { FiCheck, FiShoppingBag, FiHome, FiUsers, FiTrendingUp, FiGlobe, FiZap, FiHeart } from 'react-icons/fi';
 import { Button, Heading, Link } from '../components';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Home = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -11,25 +14,25 @@ const Home = () => {
         <div className="section-container">
           <div className="text-center max-w-5xl mx-auto">
             <h1 className="text-6xl font-medium mb-6 animate-fade-in">
-              <span className="highlight-green">Products</span> and shops your <span className="highlight-green">community</span> will love
+              {t('home.heroTitle')}
             </h1>
             <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-              Join 200,000+ creators building high-quality products and stunning shops with OPERA Manufacture
+              {t('home.heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
               <RouterLink to="/start">
                 <Button variant="primary" className="text-lg">
-                  Start now
+                  {t('common.startNow')}
                 </Button>
               </RouterLink>
               <RouterLink to="/examples">
                 <Button variant="secondary" className="text-lg">
-                  View examples
+                  {t('common.viewExamples')}
                 </Button>
               </RouterLink>
             </div>
             <p className="text-sm text-gray-500">
-              No monthly fees. No credit card required.
+              {t('common.noFeesRequired')}
             </p>
 
             {/* Creator Logos Carousel */}
@@ -49,10 +52,10 @@ const Home = () => {
         <div className="section-container">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-medium mb-4">
-              Quality <span className="highlight-green">products</span> without the <span className="highlight-green">headache</span>
+              {t('home.qualityTitle')}
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              We make it easy to create and sell premium merchandise that your fans will love
+              {t('home.qualitySubtitle')}
             </p>
           </div>
 
@@ -62,12 +65,12 @@ const Home = () => {
               <div className="w-14 h-14 bg-brand-green/10 rounded-full flex items-center justify-center mb-6">
                 <FiShoppingBag className="w-7 h-7 text-brand-green" />
               </div>
-              <h3 className="heading-sm mb-4">Create beautiful products</h3>
+              <h3 className="heading-sm mb-4">{t('home.createProductsTitle')}</h3>
               <p className="text-body mb-6">
-                We partner with top suppliers for hundreds of products—from apparel to plushies to hot sauce—with no minimums
+                {t('home.createProductsDesc')}
               </p>
               <Link variant="simple-green" href="/products">
-                Create your first product
+                {t('home.createProductsLink')}
               </Link>
             </div>
 
@@ -76,12 +79,12 @@ const Home = () => {
               <div className="w-14 h-14 bg-brand-green/10 rounded-full flex items-center justify-center mb-6">
                 <FiHome className="w-7 h-7 text-brand-green" />
               </div>
-              <h3 className="heading-sm mb-4">Launch your own shop</h3>
+              <h3 className="heading-sm mb-4">{t('home.launchShopTitle')}</h3>
               <p className="text-body mb-6">
-                Build a shop that reflects your brand with our no-code builder. Fans can buy or redeem products easily
+                {t('home.launchShopDesc')}
               </p>
               <Link variant="simple-green" href="/websites">
-                Create your own shop
+                {t('home.launchShopLink')}
               </Link>
             </div>
 
@@ -90,12 +93,12 @@ const Home = () => {
               <div className="w-14 h-14 bg-brand-green/10 rounded-full flex items-center justify-center mb-6">
                 <FiUsers className="w-7 h-7 text-brand-green" />
               </div>
-              <h3 className="heading-sm mb-4">We handle shipping & support</h3>
+              <h3 className="heading-sm mb-4">{t('home.supportTitle')}</h3>
               <p className="text-body mb-6">
-                From production and shipping to customer support, we're your partner every step of the way
+                {t('home.supportDesc')}
               </p>
               <Link variant="simple-green" href="/start">
-                Start now
+                {t('home.supportLink')}
               </Link>
             </div>
           </div>
@@ -108,15 +111,15 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-12 text-center">
             <div>
               <div className="text-5xl font-bold text-brand-green mb-2">15+</div>
-              <div className="text-gray-600">Production partners worldwide</div>
+              <div className="text-gray-600">{t('home.productionPartners')}</div>
             </div>
             <div>
               <div className="text-5xl font-bold text-brand-green mb-2">$4.80</div>
-              <div className="text-gray-600">Average shipping cost</div>
+              <div className="text-gray-600">{t('home.averageShipping')}</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-brand-green mb-2">4 days</div>
-              <div className="text-gray-600">Average delivery time</div>
+              <div className="text-5xl font-bold text-brand-green mb-2">4 {t('home.days')}</div>
+              <div className="text-gray-600">{t('home.averageDelivery')}</div>
             </div>
           </div>
         </div>
@@ -344,11 +347,11 @@ const Home = () => {
       <section className="section-padding bg-lime-300">
         <div className="section-container text-center">
           <h2 className="text-5xl md:text-6xl font-medium mb-8 text-black">
-            Build your <span className="highlight-black">brand</span>, audience, and <span className="highlight-black">income</span>
+            {t('home.finalCtaTitle')}
           </h2>
           <RouterLink to="/start">
             <Button variant="primary" className="text-lg">
-              Get started
+              {t('common.getStarted')}
             </Button>
           </RouterLink>
         </div>

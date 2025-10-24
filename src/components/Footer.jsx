@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaTwitter, FaTwitch, FaDiscord, FaYoutube } from 'react-icons/fa';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
       <div className="section-container">
@@ -10,46 +13,46 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
           {/* Fourthwall Column */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-4">Fourthwall</h3>
+            <h3 className="font-bold text-gray-900 mb-4">{t('footer.fourthwall')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/shops" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Shops
+                  {t('footer.shops')}
                 </Link>
               </li>
               <li>
                 <Link to="/websites" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Homepages
+                  {t('footer.homepages')}
                 </Link>
               </li>
               <li>
                 <Link to="/memberships" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Memberships
+                  {t('footer.memberships')}
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Product catalog
+                  {t('footer.productCatalog')}
                 </Link>
               </li>
               <li>
                 <Link to="/pricing" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Pricing
+                  {t('footer.pricing')}
                 </Link>
               </li>
               <li>
                 <Link to="/youtubers" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  For YouTubers
+                  {t('footer.forYoutubers')}
                 </Link>
               </li>
               <li>
                 <Link to="/streamers" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  For Twitch creators
+                  {t('footer.forTwitchCreators')}
                 </Link>
               </li>
               <li>
                 <Link to="/tiktokers" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  For TikTokers
+                  {t('footer.forTiktokers')}
                 </Link>
               </li>
             </ul>
@@ -57,46 +60,46 @@ const Footer = () => {
 
           {/* Learn Column */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-4">Learn</h3>
+            <h3 className="font-bold text-gray-900 mb-4">{t('footer.learn')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/examples" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Examples
+                  {t('footer.examples')}
                 </Link>
               </li>
               <li>
                 <Link to="/designers" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Designers
+                  {t('footer.designers')}
                 </Link>
               </li>
               <li>
                 <Link to="/blog" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Blog
+                  {t('footer.blog')}
                 </Link>
               </li>
               <li>
                 <Link to="/help" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Help Center
+                  {t('footer.helpCenter')}
                 </Link>
               </li>
               <li>
                 <Link to="/community" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Discord community
+                  {t('footer.discordCommunity')}
                 </Link>
               </li>
               <li>
                 <Link to="/docs" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  APIs & docs
+                  {t('footer.apisDocs')}
                 </Link>
               </li>
               <li>
                 <Link to="/faq" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  FAQ
+                  {t('footer.faq')}
                 </Link>
               </li>
               <li>
                 <Link to="/glossary" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Glossary
+                  {t('footer.glossary')}
                 </Link>
               </li>
             </ul>
@@ -104,21 +107,21 @@ const Footer = () => {
 
           {/* Company Column */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-4">Company</h3>
+            <h3 className="font-bold text-gray-900 mb-4">{t('footer.company')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/careers" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Careers
+                  {t('footer.careers')}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Contact us
+                  {t('footer.contactUs')}
                 </Link>
               </li>
               <li>
                 <Link to="/shop" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Fourthwall shop
+                  {t('footer.fourthwallShop')}
                 </Link>
               </li>
             </ul>
@@ -126,41 +129,41 @@ const Footer = () => {
 
           {/* Compare To Column */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-4">Compare to</h3>
+            <h3 className="font-bold text-gray-900 mb-4">{t('footer.compareTo')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/compare/shopify" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Shopify
+                  {t('footer.shopify')}
                 </Link>
               </li>
               <li>
                 <Link to="/compare/spring" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Spring
+                  {t('footer.spring')}
                 </Link>
               </li>
               <li>
                 <Link to="/compare/redbubble" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Redbubble
+                  {t('footer.redbubble')}
                 </Link>
               </li>
               <li>
                 <Link to="/compare/spreadshop" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Spreadshop
+                  {t('footer.spreadshop')}
                 </Link>
               </li>
               <li>
                 <Link to="/compare/streamlabs" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Streamlabs
+                  {t('footer.streamlabs')}
                 </Link>
               </li>
               <li>
                 <Link to="/compare/patreon" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Patreon
+                  {t('footer.patreon')}
                 </Link>
               </li>
               <li>
                 <Link to="/compare/all" className="text-gray-600 hover:text-brand-green transition-colors text-sm">
-                  Compare all
+                  {t('footer.compareAll')}
                 </Link>
               </li>
             </ul>
@@ -168,7 +171,7 @@ const Footer = () => {
 
           {/* Socials Column */}
           <div>
-            <h3 className="font-bold text-gray-900 mb-4">Socials</h3>
+            <h3 className="font-bold text-gray-900 mb-4">{t('footer.socials')}</h3>
             <ul className="space-y-3">
               <li>
                 <a
@@ -178,7 +181,7 @@ const Footer = () => {
                   className="flex items-center space-x-2 text-gray-600 hover:text-brand-green transition-colors text-sm"
                 >
                   <FaInstagram className="w-5 h-5" />
-                  <span>Instagram</span>
+                  <span>{t('footer.instagram')}</span>
                 </a>
               </li>
               <li>
@@ -189,7 +192,7 @@ const Footer = () => {
                   className="flex items-center space-x-2 text-gray-600 hover:text-brand-green transition-colors text-sm"
                 >
                   <FaTwitter className="w-5 h-5" />
-                  <span>X (Twitter)</span>
+                  <span>{t('footer.twitter')}</span>
                 </a>
               </li>
               <li>
@@ -200,7 +203,7 @@ const Footer = () => {
                   className="flex items-center space-x-2 text-gray-600 hover:text-brand-green transition-colors text-sm"
                 >
                   <FaTwitch className="w-5 h-5" />
-                  <span>Twitch</span>
+                  <span>{t('footer.twitch')}</span>
                 </a>
               </li>
               <li>
@@ -211,7 +214,7 @@ const Footer = () => {
                   className="flex items-center space-x-2 text-gray-600 hover:text-brand-green transition-colors text-sm"
                 >
                   <FaDiscord className="w-5 h-5" />
-                  <span>Discord</span>
+                  <span>{t('footer.discord')}</span>
                 </a>
               </li>
               <li>
@@ -222,7 +225,7 @@ const Footer = () => {
                   className="flex items-center space-x-2 text-gray-600 hover:text-brand-green transition-colors text-sm"
                 >
                   <FaYoutube className="w-5 h-5" />
-                  <span>YouTube</span>
+                  <span>{t('footer.youtube')}</span>
                 </a>
               </li>
             </ul>
@@ -234,19 +237,19 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Fourthwall. All rights reserved.
+              © {new Date().getFullYear()} {t('footer.copyright')}
             </div>
 
             {/* Legal Links */}
             <div className="flex flex-wrap justify-center gap-6">
               <Link to="/terms" className="text-sm text-gray-500 hover:text-brand-green transition-colors">
-                Terms of Service
+                {t('footer.termsOfService')}
               </Link>
               <Link to="/privacy" className="text-sm text-gray-500 hover:text-brand-green transition-colors">
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </Link>
               <Link to="/acceptable-use" className="text-sm text-gray-500 hover:text-brand-green transition-colors">
-                Acceptable Use Policy
+                {t('footer.acceptableUsePolicy')}
               </Link>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -11,7 +12,8 @@ import Auth from './pages/Auth';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <LanguageProvider>
+      <div className="min-h-screen bg-white flex flex-col">
       <Routes>
         {/* Auth Routes (without Header/Footer) */}
         <Route path="/start" element={<Auth />} />
@@ -51,6 +53,7 @@ function App() {
         />
       </Routes>
     </div>
+    </LanguageProvider>
   );
 }
 
